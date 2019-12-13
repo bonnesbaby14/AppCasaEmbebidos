@@ -24,7 +24,7 @@ class _WalletsState extends State<Wallets> {
 
     super.initState();
   }
-
+var personas;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +34,7 @@ class _WalletsState extends State<Wallets> {
         itemCount: coins.length,
         itemBuilder: (BuildContext context, int index) {
           Map coin = coins[index];
-
+personas=casita[0]['personas'];
           return Wallet(
             name: coin['name'],
             icon: coin['icon'],
@@ -47,12 +47,14 @@ class _WalletsState extends State<Wallets> {
         primary: false,
         itemCount: sensores.length,
         itemBuilder: (BuildContext context, int index) {
-          
+          if(casita.length>0){
+personas=casita[0]['personas'];
+          }
 
           return Wallet(
             name: sensores[index]['nombre'],
             icon: "assets/eth.png",
-            rate: "Temperatura"+sensores[index]['valorT']+""+"Ventana:"+sensores[index]['valorM']+"\n Luz:"+sensores[index]['valorL'] +" personas:"+casita[index]['personas'] ,
+            rate: "Temperatura"+sensores[index]['valorT']+""+"Ventana:"+sensores[index]['valorM']+"\n Luz:"+sensores[index]['valorL'] +" personas:"+personas.toString() ,
             color:charts.MaterialPalette.blue.shadeDefault,
           );
         },
